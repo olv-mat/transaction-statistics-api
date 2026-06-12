@@ -12,7 +12,7 @@ void describe('AddTransactionDto', () => {
 
   void describe('amount', () => {
     it('should fail if is not a number', async () => {
-      const dto = makeAddTransactionDto({ amount: '123.45' });
+      const dto = makeAddTransactionDto({ amount: 'amount' });
       const errors = await validate(dto);
       const error = errors[0];
       expect(errors.length).toBe(1);
