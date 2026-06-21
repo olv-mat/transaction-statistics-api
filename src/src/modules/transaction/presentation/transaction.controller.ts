@@ -1,10 +1,10 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { DefaultResponseDto } from 'src/src/common/dtos/default-response.dto';
+import { DefaultResponseDto } from 'src/src/shared/dtos/default-response.dto';
 import {
   SwaggerInternalServerError,
   SwaggerOperation,
   SwaggerUnprocessableEntity,
-} from 'src/src/common/settings/swagger/swagger.decorators';
+} from 'src/src/shared/settings/swagger/swagger.decorators';
 import { AddTransactionUseCase } from '../application/use-cases/add-transaction.usecase';
 import { AddTransactionDto } from './dtos/add-transaction.dto';
 
