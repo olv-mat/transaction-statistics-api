@@ -11,7 +11,9 @@ export class AddTransactionUseCase {
     const now = new Date();
     const { amount, timestamp } = dto;
     if (timestamp > now || amount < 0) {
-      throw new UnprocessableEntityException('Transaction rejected');
+      throw new UnprocessableEntityException(
+        'Transaction rejected due to a rule violation',
+      );
     }
     const transactionEntity = new TransactionEntity(amount, timestamp);
     this.transactionRepository.save(transactionEntity);

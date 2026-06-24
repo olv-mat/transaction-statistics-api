@@ -18,7 +18,7 @@ export class TransactionController {
 
   @Post()
   @SwaggerOperation('Add a new transaction')
-  @SwaggerUnprocessableEntity('Transaction rejected')
+  @SwaggerUnprocessableEntity('Transaction rejected due to a rule violation')
   @SwaggerInternalServerError()
   public create(@Body() dto: AddTransactionDto): DefaultResponseDto {
     this.addTransactionUseCase.execute(dto);
@@ -26,6 +26,8 @@ export class TransactionController {
   }
 
   @Delete()
+  @SwaggerOperation('Delete all transactions')
+  @SwaggerInternalServerError()
   public delete(): DefaultResponseDto {
     this.deleteAllTransactionsUseCase.execute();
     return DefaultResponseDto.create(
