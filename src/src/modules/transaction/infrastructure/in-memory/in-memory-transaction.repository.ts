@@ -9,4 +9,8 @@ export class InMemoryTransactionRepository implements TransactionRepository {
   public save(transaction: TransactionEntity): void {
     this.transactions.push(transaction);
   }
+
+  public delete(): void {
+    this.transactions.length = 0;
+  }
 }
