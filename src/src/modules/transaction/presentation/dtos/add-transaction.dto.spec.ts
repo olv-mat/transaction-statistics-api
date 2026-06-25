@@ -1,7 +1,7 @@
 import { validate } from 'class-validator';
 import { describe } from 'node:test';
 import 'reflect-metadata';
-import { makeAddTransactionDto } from './factories/add-transaction.dto.factory';
+import { makeAddTransactionDto } from '../../testing/factories/add-transaction.dto.factory';
 
 void describe('AddTransactionDto', () => {
   it('should accept if is correct', async () => {

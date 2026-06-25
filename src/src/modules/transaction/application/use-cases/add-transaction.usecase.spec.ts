@@ -1,12 +1,13 @@
 import { UnprocessableEntityException } from '@nestjs/common';
 import 'reflect-metadata';
-import { makeAddTransactionDto } from '../../presentation/tests/factories/add-transaction.dto.factory';
+import { makeAddTransactionDto } from '../../testing/factories/add-transaction.dto.factory';
 import { AddTransactionUseCase } from '../use-cases/add-transaction.usecase';
 
 describe('AddTransactionUseCase', () => {
   let addTransactionUseCase: AddTransactionUseCase;
   const transactionRepositoryMock = {
     save: jest.fn(),
+    delete: jest.fn(),
   };
 
   beforeEach(() => {

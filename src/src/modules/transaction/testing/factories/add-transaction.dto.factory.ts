@@ -1,4 +1,4 @@
-import { AddTransactionDto } from '../../dtos/add-transaction.dto';
+import { AddTransactionDto } from '../../presentation/dtos/add-transaction.dto';
 
 type AddTransactionDtoOverride = Partial<
   Record<keyof AddTransactionDto, unknown>
