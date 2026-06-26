@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
 import { DefaultResponseDto } from 'src/src/shared/dtos/default-response.dto';
 import {
   SwaggerInternalServerError,
@@ -7,14 +7,29 @@ import {
 } from 'src/src/shared/settings/swagger/swagger.decorators';
 import { AddTransactionUseCase } from '../application/use-cases/add-transaction.usecase';
 import { DeleteAllTransactionsUseCase } from '../application/use-cases/delete-all-transactions.usecase';
+import { GetStatisticsUseCase } from '../application/use-cases/get-statistics.usecase';
 import { AddTransactionDto } from './dtos/add-transaction.dto';
+import { StatisticsResponseDto } from './dtos/statistics-response.dto';
 
 @Controller('transactions')
 export class TransactionController {
   constructor(
     private readonly addTransactionUseCase: AddTransactionUseCase,
     private readonly deleteAllTransactionsUseCase: DeleteAllTransactionsUseCase,
+    private readonly getStatisticsUseCase: GetStatisticsUseCase,
   ) {}
+
+  @Get('/statistics')
+  public statistics(): StatisticsResponseDto {
+    const { count, sum, avg, min, max } = this.getStatisticsUseCase.execute();
+    return StatisticsResponseDto.create({
+      count,
+      sum,
+      avg,
+      min,
+      max,
+    });
+  }
 
   @Post()
   @SwaggerOperation('Add a new transaction')
