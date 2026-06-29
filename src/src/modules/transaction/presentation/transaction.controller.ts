@@ -20,6 +20,8 @@ export class TransactionController {
   ) {}
 
   @Get('/statistics')
+  @SwaggerOperation('Retrieve transaction statistics for the last 60 seconds')
+  @SwaggerInternalServerError()
   public statistics(): StatisticsResponseDto {
     const { count, sum, avg, min, max } = this.getStatisticsUseCase.execute();
     return StatisticsResponseDto.create({
