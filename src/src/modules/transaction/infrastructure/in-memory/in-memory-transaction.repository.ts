@@ -9,6 +9,10 @@ import {
 export class InMemoryTransactionRepository implements TransactionRepository {
   private readonly transactions: TransactionEntity[] = [];
 
+  public items(): ReadonlyArray<TransactionEntity> {
+    return this.transactions;
+  }
+
   public save(transaction: TransactionEntity): void {
     this.transactions.push(transaction);
   }
