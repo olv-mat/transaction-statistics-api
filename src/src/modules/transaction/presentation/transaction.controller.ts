@@ -19,20 +19,6 @@ export class TransactionController {
     private readonly getStatisticsUseCase: GetStatisticsUseCase,
   ) {}
 
-  @Get('/statistics')
-  @SwaggerOperation('Retrieve transaction statistics for the last 60 seconds')
-  @SwaggerInternalServerError()
-  public statistics(): StatisticsResponseDto {
-    const { count, sum, avg, min, max } = this.getStatisticsUseCase.execute();
-    return StatisticsResponseDto.create({
-      count,
-      sum,
-      avg,
-      min,
-      max,
-    });
-  }
-
   @Post()
   @SwaggerOperation('Add a new transaction')
   @SwaggerUnprocessableEntity('Transaction rejected due to a rule violation')
@@ -50,5 +36,19 @@ export class TransactionController {
     return DefaultResponseDto.create(
       'All transactions were successfully deleted',
     );
+  }
+
+  @Get('/statistics')
+  @SwaggerOperation('Retrieve transaction statistics for the last 60 seconds')
+  @SwaggerInternalServerError()
+  public statistics(): StatisticsResponseDto {
+    const { count, sum, avg, min, max } = this.getStatisticsUseCase.execute();
+    return StatisticsResponseDto.create({
+      count,
+      sum,
+      avg,
+      min,
+      max,
+    });
   }
 }
