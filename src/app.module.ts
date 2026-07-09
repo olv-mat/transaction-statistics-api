@@ -4,6 +4,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { LoggerModule } from 'nestjs-pino';
 import { TransactionModule } from './src/modules/transaction/transaction.module';
+import { HealthModule } from './src/modules/health/health.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { TransactionModule } from './src/modules/transaction/transaction.module'
     }),
     LoggerModule.forRoot(),
     TransactionModule,
+    HealthModule,
   ],
   controllers: [],
   providers: [
