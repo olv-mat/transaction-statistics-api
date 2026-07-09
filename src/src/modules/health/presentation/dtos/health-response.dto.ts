@@ -1,11 +1,11 @@
 export type HealthResponseProperties = {
   status: string;
-  timestamp: Date;
+  timestamp: string;
 };
 
 export class HealthResponseDto {
   public readonly status: string;
-  public readonly timestamp: Date;
+  public readonly timestamp: string;
 
   private constructor(properties: HealthResponseProperties) {
     this.status = properties.status;
