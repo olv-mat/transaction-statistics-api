@@ -5,6 +5,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { LoggerModule } from 'nestjs-pino';
 import { TransactionModule } from './src/modules/transaction/transaction.module';
 import { HealthModule } from './src/modules/health/health.module';
+import { MonitoringModule } from './src/modules/monitoring/monitoring.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { HealthModule } from './src/modules/health/health.module';
     LoggerModule.forRoot(),
     TransactionModule,
     HealthModule,
+    MonitoringModule,
   ],
   controllers: [],
   providers: [
