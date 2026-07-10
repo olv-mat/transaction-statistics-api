@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { MonitoringService } from './monitoring.service';
-import { MonitoringController } from './monitoring.controller';
+import { MonitoringUseCase } from './application/use-cases/monitoring.usecase';
+import { MonitoringController } from './presentation/monitoring.controller';
 
 @Module({
   controllers: [MonitoringController],
-  providers: [MonitoringService],
+  providers: [MonitoringUseCase],
 })
 export class MonitoringModule {}
