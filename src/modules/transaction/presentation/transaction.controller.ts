@@ -1,10 +1,10 @@
 import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
-import { DefaultResponseDto } from 'src/src/shared/dtos/default-response.dto';
+import { DefaultResponseDto } from 'src/shared/dtos/default-response.dto';
 import {
   SwaggerInternalServerError,
   SwaggerOperation,
   SwaggerUnprocessableEntity,
-} from 'src/src/shared/settings/swagger/swagger.decorators';
+} from 'src/shared/settings/swagger/swagger.decorators';
 import { AddTransactionUseCase } from '../application/use-cases/add-transaction.usecase';
 import { DeleteAllTransactionsUseCase } from '../application/use-cases/delete-all-transactions.usecase';
 import { GetStatisticsUseCase } from '../application/use-cases/get-statistics.usecase';

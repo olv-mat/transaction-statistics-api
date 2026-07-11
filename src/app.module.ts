@@ -3,9 +3,9 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { LoggerModule } from 'nestjs-pino';
-import { TransactionModule } from './src/modules/transaction/transaction.module';
-import { HealthModule } from './src/modules/health/health.module';
-import { MonitoringModule } from './src/modules/monitoring/monitoring.module';
+import { HealthModule } from './modules/health/health.module';
+import { MonitoringModule } from './modules/monitoring/monitoring.module';
+import { TransactionModule } from './modules/transaction/transaction.module';
 
 @Module({
   imports: [
