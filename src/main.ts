@@ -2,7 +2,9 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
+import { MonitoringUseCase } from './modules/monitoring/application/use-cases/monitoring.usecase';
 import { Environments } from './shared/enums/environments.enum';
+import { MonitoringInterceptor } from './shared/interceptors/monitoring.interceptor';
 import { swaggerSetup } from './shared/settings/swagger/swagger.setup';
 
 async function bootstrap() {
@@ -14,6 +16,9 @@ async function bootstrap() {
       whitelist: true,
       forbidNonWhitelisted: true,
     }),
+  );
+  app.useGlobalInterceptors(
+    new MonitoringInterceptor(app.get(MonitoringUseCase)),
   );
   if (process.env.NODE_ENV === Environments.PRODUCTION) {
     app.use(helmet());
