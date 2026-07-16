@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { DefaultResponseDto } from 'src/src/shared/dtos/default-response.dto';
+import { DefaultResponseDto } from 'src/shared/dtos/default-response.dto';
 import { AddTransactionUseCase } from '../application/use-cases/add-transaction.usecase';
 import { DeleteAllTransactionsUseCase } from '../application/use-cases/delete-all-transactions.usecase';
 import { GetStatisticsUseCase } from '../application/use-cases/get-statistics.usecase';
