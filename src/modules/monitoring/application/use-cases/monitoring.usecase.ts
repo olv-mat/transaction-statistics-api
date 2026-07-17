@@ -15,27 +15,26 @@ export class MonitoringUseCase {
       name: 'total_requests',
       help: 'Total number of requests',
       labelNames: ['method'],
+      registers: [this.registry],
     });
 
     this.gauge = new Gauge({
       name: 'average_request_duration',
       help: 'Average request duration in seconds',
       labelNames: ['method'],
+      registers: [this.registry],
     });
-
-    this.registry.registerMetric(this.counter);
-    this.registry.registerMetric(this.gauge);
   }
 
-  public incrementRequestCounter(method: string): void {
+  public incRequestCounter(method: string): void {
     this.counter.inc({ method });
   }
 
-  public recordRequestDuration(method: string, duration: number): void {
+  public setRequestDuration(method: string, duration: number): void {
     this.gauge.set({ method }, duration);
   }
 
-  public async execute(): Promise<string> {
+  public execute(): Promise<string> {
     return this.registry.metrics();
   }
 }

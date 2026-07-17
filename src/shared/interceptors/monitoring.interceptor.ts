@@ -22,8 +22,8 @@ export class MonitoringInterceptor implements NestInterceptor {
     return next.handle().pipe(
       tap(() => {
         const duration = (Date.now() - start) / 1000;
-        this.monitoringUseCase.incrementRequestCounter(method);
-        this.monitoringUseCase.recordRequestDuration(method, duration);
+        this.monitoringUseCase.incRequestCounter(method);
+        this.monitoringUseCase.setRequestDuration(method, duration);
       }),
     );
   }
