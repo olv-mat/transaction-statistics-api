@@ -1,4 +1,4 @@
-export type HealthResponseProperties = {
+type HealthResponseProperties = {
   status: string;
   timestamp: string;
 };

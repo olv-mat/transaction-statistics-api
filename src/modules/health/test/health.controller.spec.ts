@@ -1,5 +1,5 @@
-import { makeHealthResponseDto } from '../testing/factories/health-response.dto.factory';
-import { HealthController } from './health.controller';
+import { HealthController } from '../presentation/health.controller';
+import { makeHealthResponseDto } from './factories/health-response.dto.factory';
 
 describe('HealthController', () => {
   let healthController: HealthController;

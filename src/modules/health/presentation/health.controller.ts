@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import {
   SwaggerInternalServerError,
   SwaggerOperation,
-} from 'src/shared/settings/swagger/swagger.decorators';
+} from 'src/shared/presentation/swagger/swagger.decorators';
 import { HealthResponseDto } from './dtos/health-response.dto';
 
 @Controller('health')
