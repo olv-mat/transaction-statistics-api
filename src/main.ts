@@ -1,15 +1,32 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
+import { SwaggerTheme, SwaggerThemeNameEnum } from 'swagger-themes';
 import { AppModule } from './app.module';
 import { MonitoringUseCase } from './modules/monitoring/application/use-cases/monitoring.usecase';
 import { Environments } from './shared/enums/environments.enum';
-import { MonitoringInterceptor } from './shared/interceptors/monitoring.interceptor';
-import { swaggerSetup } from './shared/settings/swagger/swagger.setup';
+import { MonitoringInterceptor } from './shared/infrastructure/interceptors/monitoring.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  swaggerSetup(app);
+  const document = SwaggerModule.createDocument(
+    app,
+    new DocumentBuilder()
+      .setTitle('Transaction Statistics API')
+      .setDescription(
+        'A NestJS-based API that processes transactions and provides real-time statistics, built with a strong focus on Clean Architecture principles.',
+      )
+      .build(),
+  );
+  const theme = new SwaggerTheme();
+  SwaggerModule.setup('/api', app, document, {
+    customCss: theme.getBuffer(SwaggerThemeNameEnum.DARK),
+    swaggerOptions: {
+      tagsSorter: 'alpha',
+      operationsSorter: 'alpha',
+    },
+  });
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
