@@ -2,7 +2,7 @@ import { Controller, Get, Header } from '@nestjs/common';
 import {
   SwaggerInternalServerError,
   SwaggerOperation,
-} from 'src/shared/settings/swagger/swagger.decorators';
+} from 'src/shared/presentation/swagger/swagger.decorators';
 import { MonitoringUseCase } from '../application/use-cases/monitoring.usecase';
 
 @Controller('monitoring')

@@ -1,4 +1,4 @@
-import { MonitoringUseCase } from './monitoring.usecase';
+import { MonitoringUseCase } from '../application/use-cases/monitoring.usecase';
 
 describe('MonitoringUseCase', () => {
   let monitoringUseCase: MonitoringUseCase;
