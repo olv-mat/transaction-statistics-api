@@ -1,6 +1,6 @@
-import { makeStatisticsData } from '../../testing/factories/statistics-data.factory';
-import { makeTransactionEntity } from '../../testing/factories/transaction.entity.factory';
-import { InMemoryTransactionRepository } from './in-memory-transaction.repository';
+import { InMemoryTransactionRepository } from '../infrastructure/in-memory/in-memory-transaction.repository';
+import { makeStatisticsData } from './factories/statistics-data.factory';
+import { makeTransactionEntity } from './factories/transaction.entity.factory';
 
 describe('InMemoryTransactionRepository', () => {
   let inMemoryTransactionRepository: InMemoryTransactionRepository;

@@ -1,16 +1,16 @@
 import { validate } from 'class-validator';
 import { describe } from 'node:test';
 import 'reflect-metadata';
-import { makeAddTransactionDto } from '../../testing/factories/add-transaction.dto.factory';
+import { makeAddTransactionDto } from './factories/add-transaction.dto.factory';
 
-void describe('AddTransactionDto', () => {
+describe('AddTransactionDto', () => {
   it('should accept if is correct', async () => {
     const dto = makeAddTransactionDto();
     const errors = await validate(dto);
     expect(errors.length).toBe(0);
   });
 
-  void describe('amount', () => {
+  describe('amount', () => {
     it('should fail if is not a number', async () => {
       const dto = makeAddTransactionDto({ amount: 'amount' });
       const errors = await validate(dto);
@@ -21,7 +21,7 @@ void describe('AddTransactionDto', () => {
     });
   });
 
-  void describe('timestamp', () => {
+  describe('timestamp', () => {
     it('should fail if is not a date', async () => {
       const dto = makeAddTransactionDto({ timestamp: 'timestamp' });
       const errors = await validate(dto);

@@ -1,4 +1,4 @@
-export type StatisticsResponseProperties = {
+type StatisticsResponseProperties = {
   count: number;
   sum: number;
   avg: number;

@@ -1,4 +1,4 @@
-import { TransactionEntity } from '../../domain/entities/transaction.entity';
+import { TransactionEntity } from '../entities/transaction.entity';
 
 export type StatisticsData = {
   count: number;
@@ -6,6 +6,11 @@ export type StatisticsData = {
   avg: number;
   min: number;
   max: number;
+};
+
+export type TransactionPayload = {
+  amount: number;
+  timestamp: Date;
 };
 
 export abstract class TransactionRepository {

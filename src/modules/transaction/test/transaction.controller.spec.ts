@@ -1,13 +1,13 @@
 import 'reflect-metadata';
-import { DefaultResponseDto } from 'src/shared/dtos/default-response.dto';
+import { DefaultResponseDto } from 'src/shared/presentation/dtos/default-response.dto';
+import { makeUseCaseMock } from '../../../shared/test/mocks/use-case.mock';
 import { AddTransactionUseCase } from '../application/use-cases/add-transaction.usecase';
 import { DeleteAllTransactionsUseCase } from '../application/use-cases/delete-all-transactions.usecase';
 import { GetStatisticsUseCase } from '../application/use-cases/get-statistics.usecase';
-import { makeAddTransactionDto } from '../testing/factories/add-transaction.dto.factory';
-import { makeStatisticsData } from '../testing/factories/statistics-data.factory';
-import { makeUseCaseMock } from '../testing/mocks/use-case.mock';
-import { StatisticsResponseDto } from './dtos/statistics-response.dto';
-import { TransactionController } from './transaction.controller';
+import { StatisticsResponseDto } from '../presentation/dtos/statistics-response.dto';
+import { TransactionController } from '../presentation/transaction.controller';
+import { makeAddTransactionDto } from '../test/factories/add-transaction.dto.factory';
+import { makeStatisticsData } from '../test/factories/statistics-data.factory';
 
 describe('TransactionController', () => {
   let transactionController: TransactionController;
@@ -24,10 +24,10 @@ describe('TransactionController', () => {
     );
   });
 
-  describe('create', () => {
+  describe('add', () => {
     it('should return a default response', () => {
       const dto = makeAddTransactionDto();
-      const response = transactionController.create(dto);
+      const response = transactionController.add(dto);
       expect(addTransactionUseCaseMock.execute).toHaveBeenCalledWith(dto);
       expect(response instanceof DefaultResponseDto).toBe(true);
     });

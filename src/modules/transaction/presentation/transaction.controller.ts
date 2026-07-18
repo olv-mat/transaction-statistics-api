@@ -1,10 +1,10 @@
 import { Body, Controller, Delete, Get, Post } from '@nestjs/common';
-import { DefaultResponseDto } from 'src/shared/dtos/default-response.dto';
+import { DefaultResponseDto } from 'src/shared/presentation/dtos/default-response.dto';
 import {
   SwaggerInternalServerError,
   SwaggerOperation,
   SwaggerUnprocessableEntity,
-} from 'src/shared/settings/swagger/swagger.decorators';
+} from 'src/shared/presentation/swagger/swagger.decorators';
 import { AddTransactionUseCase } from '../application/use-cases/add-transaction.usecase';
 import { DeleteAllTransactionsUseCase } from '../application/use-cases/delete-all-transactions.usecase';
 import { GetStatisticsUseCase } from '../application/use-cases/get-statistics.usecase';
@@ -23,7 +23,7 @@ export class TransactionController {
   @SwaggerOperation('Add a new transaction')
   @SwaggerUnprocessableEntity('Transaction rejected due to a rule violation')
   @SwaggerInternalServerError()
-  public create(@Body() dto: AddTransactionDto): DefaultResponseDto {
+  public add(@Body() dto: AddTransactionDto): DefaultResponseDto {
     this.addTransactionUseCase.execute(dto);
     return DefaultResponseDto.create('Transaction accepted and registered');
   }

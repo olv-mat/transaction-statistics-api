@@ -1,5 +1,5 @@
-import { makeTransactionRepositoryMock } from '../../testing/mocks/transaction.repository.mock';
-import { DeleteAllTransactionsUseCase } from './delete-all-transactions.usecase';
+import { DeleteAllTransactionsUseCase } from '../application/use-cases/delete-all-transactions.usecase';
+import { makeTransactionRepositoryMock } from './mocks/transaction.repository.mock';
 
 describe('DeleteAllTransactionsUseCase', () => {
   let deleteAllTransactionsUseCase: DeleteAllTransactionsUseCase;

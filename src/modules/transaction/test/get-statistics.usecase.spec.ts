@@ -1,6 +1,6 @@
-import { makeStatisticsData } from '../../testing/factories/statistics-data.factory';
-import { makeTransactionRepositoryMock } from '../../testing/mocks/transaction.repository.mock';
-import { GetStatisticsUseCase } from './get-statistics.usecase';
+import { GetStatisticsUseCase } from '../application/use-cases/get-statistics.usecase';
+import { makeStatisticsData } from './factories/statistics-data.factory';
+import { makeTransactionRepositoryMock } from './mocks/transaction.repository.mock';
 
 describe('GetStatisticsUseCase', () => {
   let getStatisticsUseCase: GetStatisticsUseCase;

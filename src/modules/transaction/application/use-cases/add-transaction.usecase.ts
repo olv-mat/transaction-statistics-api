@@ -1,15 +1,17 @@
 import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { TransactionEntity } from '../../domain/entities/transaction.entity';
-import { TransactionRepository } from '../../domain/repositories/transaction.repository';
-import { AddTransactionDto } from '../../presentation/dtos/add-transaction.dto';
+import {
+  TransactionPayload,
+  TransactionRepository,
+} from '../../domain/repositories/transaction.repository';
 
 @Injectable()
 export class AddTransactionUseCase {
   constructor(private readonly transactionRepository: TransactionRepository) {}
 
-  public execute(dto: AddTransactionDto): void {
+  public execute(payload: TransactionPayload): void {
     const now = new Date();
-    const { amount, timestamp } = dto;
+    const { amount, timestamp } = payload;
     if (timestamp > now || amount < 0) {
       throw new UnprocessableEntityException(
         'Transaction rejected due to a rule violation',

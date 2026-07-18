@@ -1,7 +1,8 @@
 import { Type } from 'class-transformer';
 import { IsDate, IsNumber } from 'class-validator';
+import { TransactionPayload } from '../../domain/repositories/transaction.repository';
 
-export class AddTransactionDto {
+export class AddTransactionDto implements TransactionPayload {
   @IsNumber()
   public readonly amount!: number;
 
